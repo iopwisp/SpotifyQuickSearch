@@ -10,9 +10,9 @@ load_dotenv("secrets.env")
 
 # Настройка Spotify API
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    client_id=os.getenv("SPOTIPY_CLIENT_ID"),
-    client_secret=os.getenv("SPOTIPY_CLIENT_SECRET"),
-    redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI"),
+    client_id="1920244aeda1435391174da2822b29d3",
+    client_secret="01a39573495143699efe5f598af06ae4",
+    redirect_uri="http://127.0.0.1:8888/callback",
     scope="user-library-read user-modify-playback-state playlist-read-private user-read-playback-state"
 ))
 # Кэширование треков
