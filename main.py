@@ -4,7 +4,20 @@ from spotify_api import fetch_data, search_and_play, play_track, sp
 import keyboard
 import time
 from tkinter import ttk
+import winreg
+import os
+import sys
 
+def add_to_startup(exe_path=None):
+    if exe_path is None:
+        exe_path = os.path.abspath(sys.argv[0])
+    key = winreg.HKEY_CURRENT_USER
+    reg_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
+    app_name = "SpotifyQuickSearch"
+    with winreg.OpenKey(key, reg_path, 0, winreg.KEY_SET_VALUE) as reg_key:
+        winreg.SetValueEx(reg_key, app_name, 0, winreg.REG_SZ, exe_path)
+
+add_to_startup()
 
 def create_gui(root, on_search, on_play, on_close):
     # Основные цвета
